@@ -29,8 +29,8 @@ const yScale = d3.scaleLinear().range([GROUP_HEIGHT, 0]);
 
 // the domain will be set in the "updateChart" function
 const colourScale = d3
-    .scaleOrdinal()
-    .range(d3.schemeTableau10);
+  .scaleOrdinal()
+  .range(d3.schemeTableau10);
 
 const xAxisCall = d3.axisBottom(xScale);
 
@@ -64,7 +64,7 @@ const yLabel = group
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////// SETTINGS WHICH WILL BE UPDATED PERIODICALLY /////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
-const updateChart =(data) => {
+const updateChart = (data) => {
   const property = isRevenue ? "revenue" : "profit";
 
   // we are passing a number of milliseconds throught which the transition will be applied
