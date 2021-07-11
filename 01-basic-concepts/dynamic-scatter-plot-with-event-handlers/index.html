@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<title>17: Event Handlers</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap-v4.4.1.min.css">
+	<!-- jQuery UI styling -->
+	<link rel="stylesheet" href="css/jquery-ui-v1.12.1.css">
+	<!-- Tooltip styling -->
+	<link rel="stylesheet" href="css/d3-tip.css">
+	<!-- Custom styling -->
+	<link rel="stylesheet" href="css/style.css">
+</head>
+</head>
+<body>
+	<nav class="navbar navbar-light bg-light">
+		<div class="container">
+			<a class="navbar-brand" href="#"><img id="logo" src="img/logo.png"></a>      
+		</div>
+	</nav>
+
+	<!-- Bootstrap grid setup -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<button id="play-button" class="btn btn-primary">Play</button>
+				<button id="reset-button" class="btn btn-primary">Reset</button>
+				<div id="slider-div">
+					<label>Year: <span id="year">1800</span></label>
+					<div id="date-slider"></div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<select id="continent-select"  class="form-control">
+					<option selected value="all">All</option>
+					<option value="europe">Europe</option>
+					<option value="asia">Asia</option>
+					<option value="americas">Americas</option>
+					<option value="africa">Africa</option>
+				</select>
+			</div>    
+		</div>
+		<div class="row">
+			<div id="plot-area" class="col-md-12"></div>
+		</div>
+	</div>
+
+	<!-- External JS libraries -->
+	<script src="js/d3.v7.min.js"></script>
+	<script src="js/d3-v6-tip.min.js"></script>
+	<script src="js/jquery-v3.4.1.min.js"></script>
+	<script src="js/jquery-ui-v1.12.1.min.js"></script>
+	<script src="js/bootstrap-v4.4.1.min.js"></script>
+	<script src="js/popper-v1.16.0.min.js"></script>
+	<!-- Custom JS -->
+	<script src="js/main.js"></script>
+</body>
+</html>
