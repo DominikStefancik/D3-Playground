@@ -6,16 +6,6 @@ const MARGIN = { top: 10, right: 10, bottom: 55, left: 65 };
 const WIDTH = 1060 - MARGIN.left - MARGIN.right;
 const HEIGHT = 740 - MARGIN.top - MARGIN.bottom;
 const AXIS_LABEL_FONT_SIZE = 20;
-const CONTINENT_BAR = {
-  width: 120,
-  height: 50,
-  x: WIDTH - 140,
-  y: (index) => HEIGHT / 2 + index * 60,
-  text: {
-    x: WIDTH - 80,
-    y: (index) => HEIGHT / 2 + index * 60 + 30,
-  },
-};
 const FONT_STYLE = "Courier";
 let currentYear;
 let dataIndex = 0;
@@ -28,7 +18,7 @@ const group = d3
   .attr("width", WIDTH + MARGIN.left + MARGIN.right)
   .attr("height", HEIGHT + MARGIN.top + MARGIN.bottom)
   .append("g")
-  .attr("transform", "translate(" + MARGIN.left + "," + MARGIN.top + ")");
+  .attr("transform", `translate(${MARGIN.left}, ${MARGIN.top})`);
 
 const xScale = d3.scaleLog().base(10).domain([100, 150000]).range([0, WIDTH]);
 const yScale = d3.scaleLinear().domain([0, 90]).range([HEIGHT, 0]);
@@ -101,6 +91,39 @@ group
   .attr("font-family", FONT_STYLE)
   .attr("text-anchor", "middle")
   .attr("transform", "rotate(-90)");
+
+// adds legend with rows as a whole group and then positions it in the plot
+// this way there's no need to calculate the position for each individual row
+const addLegend = (continents) => {
+  const legendGroup = group
+    .append("g")
+    .attr("transform", `translate(${WIDTH - 45}, ${HEIGHT / 2 + 100})`);
+
+  // generate rows in the legend group
+  continents.forEach((continent, index) => {
+    const legendGroupRow = legendGroup
+      .append("g")
+      .attr("transform", `translate(0, ${index * 40})`);
+
+    legendGroupRow
+      .append("rect")
+      .attr("width", 20)
+      .attr("height", 20)
+      .style("fill", colourScale(continent));
+
+    legendGroupRow
+      .append("text")
+      .text(continent)
+      .attr("x", -20)
+      .attr("y", 15)
+      .attr("font-size", AXIS_LABEL_FONT_SIZE)
+      .attr("font-family", FONT_STYLE)
+      .attr("text-anchor", "end")
+      // "style" method is used to set CSS styles in an SVG element
+      // sometimes a style can be an attribute (e.g "fill", "stroke", "stroke-width", ...) BUT not all style can be attributes
+      .style("text-transform", "capitalize");
+  });
+};
 
 ////////////////////////////////////////////////////////////////////////////////////
 ////////////////////// ATTACHING EVENT HANDLERS (using jQuery) /////////////////////
@@ -243,26 +266,7 @@ const updatePlot = (countriesData) => {
   const continents = extractContinents(countriesData[0]);
   colourScale.domain(continents);
 
-  const bars = group.selectAll("rect").data(continents);
-
-  bars
-    .enter()
-    .append("rect")
-    .attr("x", CONTINENT_BAR.x)
-    .attr("y", (data, index) => CONTINENT_BAR.y(index))
-    .attr("width", CONTINENT_BAR.width)
-    .attr("height", CONTINENT_BAR.height)
-    .style("fill", (continent) => colourScale(continent));
-
-  bars
-    .enter()
-    .append("text")
-    .text((continent) => continent)
-    .attr("x", CONTINENT_BAR.text.x)
-    .attr("y", (data, index) => CONTINENT_BAR.text.y(index))
-    .attr("font-size", AXIS_LABEL_FONT_SIZE)
-    .attr("font-family", FONT_STYLE)
-    .attr("text-anchor", "middle");
+  addLegend(continents);
 
   // initially show the data for the first year before a user starts the visualisation
   updatePlot(countriesData[0]);
