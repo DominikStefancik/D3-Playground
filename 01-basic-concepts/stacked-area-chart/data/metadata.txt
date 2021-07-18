@@ -1,0 +1,10 @@
+0: "Year"
+1: "Total carbon emissions from fossil fuel consumption and cement production (million metric tons of C)"
+2: "Carbon emissions from gas fuel consumption"
+3: "Carbon emissions from liquid fuel consumption"
+4: "Carbon emissions from solid fuel consumption"
+5: "Carbon emissions from cement production"
+6: "Carbon emissions from gas flaring"
+7: "Per capita carbon emissions (metric tons of carbon; after 1949 only)"
+
+
