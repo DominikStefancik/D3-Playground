@@ -1,0 +1,43 @@
+#chart-area {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#logo {
+  height: 50px;
+}
+
+.navbar .container {
+  justify-content: center !important;
+}
+
+.navbar-brand {
+  height: 60px;
+  padding: 5px 0px;
+}
+
+.selections {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-family: "Georgia";
+}
+
+#play-button,
+#reset-button,
+#country-number-select,
+label {
+  font-size: 20px;
+  font-family: "Georgia";
+}
+
+#play-button,
+#reset-button,
+#country-number-select {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 10px;
+}
