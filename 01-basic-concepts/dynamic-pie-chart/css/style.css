@@ -8,9 +8,18 @@
   height: 50px;
 }
 
+.navbar .container {
+  justify-content: center !important;
+}
+
 .navbar-brand {
   height: 60px;
   padding: 5px 0px;
+}
+
+h3 {
+  font-family: "Georgia";
+  padding-top: 10px;
 }
 
 #selections .col-md-4 {

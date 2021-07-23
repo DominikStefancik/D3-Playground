@@ -8,6 +8,10 @@
   height: 50px;
 }
 
+.navbar .container {
+  justify-content: center !important;
+}
+
 .navbar-brand {
   height: 60px;
   padding: 5px 0px;
@@ -45,6 +49,10 @@
   stroke: #777;
   stroke-width: 2px;
   stroke-dasharray: 3, 3;
+}
+
+h3 {
+  font-family: "Courier";
 }
 
 #selections .col-md-4 {
