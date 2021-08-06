@@ -1,0 +1,50 @@
+#chart-area svg {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#logo {
+  height: 50px;
+}
+
+.navbar .container {
+  justify-content: center !important;
+}
+
+.navbar-brand {
+  height: 60px;
+  padding: 5px 0px;
+}
+
+.selections {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.selection {
+  width: 300px;
+}
+
+.node {
+  stroke: black;
+  stroke-width: 1px;
+}
+
+.node-root {
+  fill: white;
+}
+
+h3 {
+  font-family: "Georgia";
+  padding-top: 10px;
+}
+
+label {
+  font-size: 20px;
+  font-family: "Georgia";
+}
+
+text {
+  font-family: "Georgia";
+}

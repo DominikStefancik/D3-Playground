@@ -1,4 +1,4 @@
-# Static stacked area chart
+# Static Stacked Area Chart
 
 A static stacked area chart showing CO2 emissions caused by fossil fuels throughout years from 1751 till 2014.
 

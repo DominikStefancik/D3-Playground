@@ -1,4 +1,4 @@
-# Dynamic pie chart
+# Dynamic Pie Chart
 
 A dynamic pie and donut chart showing for different countries percentages of population having a particular blood type.
 

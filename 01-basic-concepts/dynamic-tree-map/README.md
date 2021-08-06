@@ -1,4 +1,4 @@
-# Dynamic tree map
+# Dynamic Tree Map
 
 A dynamic tree map showing for different countries percentages of population having a particular blood type.
 

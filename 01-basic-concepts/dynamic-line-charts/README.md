@@ -1,4 +1,4 @@
-# Dynamic line charts
+# Dynamic Line Charts
 
 Dynamic line charts showing price development of 5 crypto currencies throughout years.
 

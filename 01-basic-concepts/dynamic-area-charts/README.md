@@ -1,4 +1,4 @@
-# Dynamic area charts
+# Dynamic Area Charts
 
 Dynamic area charts showing population growth (in percentage) of different countries throughout years.
 
