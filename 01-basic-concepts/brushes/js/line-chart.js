@@ -12,13 +12,16 @@
  * Represents a visualisation as a Line Chart
  */
 class LineChart {
-  constructor(parentElement, settings, data) {
+  constructor(parentElement, settings, data, coin) {
     this.parentElement = parentElement;
     this.data = data;
-    this.coinName = settings.coinName;
-    this.coinClass = settings.coinClass;
+    this.coin = coin;
 
     this.init(settings);
+  }
+
+  setCoin(coin) {
+    this.coin = coin;
   }
 
   /**
@@ -82,17 +85,23 @@ class LineChart {
 
     this.group
       .append("text")
-      .text(this.coinName)
+      .text("Time")
       .attr("x", this.width / 2)
       .attr("y", this.height + 50)
       .attr("font-size", labelFontSize)
       .attr("font-family", fontStyle)
       .attr("text-anchor", "middle");
 
-    this.group
-      .append("path")
-      // we have to add a different class for path in each chart
-      .attr("class", this.coinClass);
+    this.outerLabel = this.group
+      .append("text")
+      .attr("x", -this.height / 2)
+      .attr("y", -margin.left + 20)
+      .attr("font-size", labelFontSize)
+      .attr("font-family", fontStyle)
+      .attr("text-anchor", "middle")
+      .attr("transform", "rotate(-90)");
+
+    this.group.append("path").attr("class", "line");
 
     this.updateData();
   }
@@ -101,9 +110,10 @@ class LineChart {
    * Selects/filters the data we want to use
    */
   updateData() {
+    const coinData = this.data[this.coin];
+
     // filter data from selected time period
-    const filteredData = this.data.filter(
-      // the "minDate" and "maxDate" are set in the main controller
+    const filteredData = coinData.filter(
       (data) => data.date >= minDate && data.date <= maxDate
     );
 
@@ -131,16 +141,12 @@ class LineChart {
       .x((data) => this.xScale(data.date))
       .y((data) => this.yScale(data[varSelectValue]));
 
-    // we select only the path in the chart we are in
-    // otherwise we would select paths from all charts and rendered it according to the data
-    // from the last chart which is rendered
-    d3.selectAll(`path.${this.coinClass}`)
+    d3.selectAll(".line")
       .transition(transition)
       .attr("d", this.line(filteredData));
 
     createTooltip({
       parentGroup: this.group,
-      coinClass: this.coinClass,
       data: filteredData,
       yParameter: varSelectValue,
       height: this.height,
@@ -148,5 +154,7 @@ class LineChart {
       xScale: this.xScale,
       yScale: this.yScale,
     });
+
+    this.outerLabel.text($("#var-select option:selected").text() + " ($)");
   }
 }

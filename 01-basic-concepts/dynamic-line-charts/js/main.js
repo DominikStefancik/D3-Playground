@@ -101,10 +101,7 @@ const outerLabel = group
 group
   .append("path")
   // the class attribute has to be provided, so we can later grab the line and update its shape
-  .attr("class", "line")
-  .attr("fill", "none")
-  .attr("stroke", "grey")
-  .attr("stroke-width", "3px");
+  .attr("class", "line");
 
 $("#coin-select").on("change", () => {
   updateChart(cleanData);

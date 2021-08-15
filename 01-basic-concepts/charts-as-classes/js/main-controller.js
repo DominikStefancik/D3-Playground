@@ -1,6 +1,6 @@
 /*
  *  Main controller responsible for the loading data, setting up input controls (selectbox, slider, ...)
- *  and reacting to user actions (time interval change, selection chagne, ...).
+ *  and reacting to user actions (time interval change, selection change, ...).
  *  It triggers updates on the line charts every time a user changes data.
  */
 
